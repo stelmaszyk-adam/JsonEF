@@ -1,13 +1,13 @@
-package com.internCompany.epicFormatter;
+package com.insudi.insudi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EpicFormatterApplication {
+public class InsudiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EpicFormatterApplication.class, args);
+		SpringApplication.run(InsudiApplication.class, args);
 	}
 
 }

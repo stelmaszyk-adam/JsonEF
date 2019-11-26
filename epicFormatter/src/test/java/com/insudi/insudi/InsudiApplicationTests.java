@@ -1,10 +1,10 @@
-package com.internCompany.epicFormatter;
+package com.insudi.insudi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EpicFormatterApplicationTests {
+class InsudiApplicationTests {
 
 	@Test
 	void contextLoads() {
