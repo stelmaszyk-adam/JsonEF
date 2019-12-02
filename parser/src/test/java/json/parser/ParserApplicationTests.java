@@ -1,10 +1,10 @@
-package com.insudi.insudi;
+package json.parser;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InsudiApplicationTests {
+class ParserApplicationTests {
 
 	@Test
 	void contextLoads() {
