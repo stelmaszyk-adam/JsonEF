@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>json</groupId>
 	<artifactId>parser</artifactId>
-	<version>1.0.Beta</version>
+	<version>1.2.Beta</version>
 	<name>parser</name>
 	<description>Project is created to help people better format JSON files</description>
 
