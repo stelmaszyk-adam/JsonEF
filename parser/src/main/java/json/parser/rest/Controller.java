@@ -20,16 +20,16 @@ public class Controller {
 
     @PostMapping(path = "beautify", produces = "application/json")
     public String beautify(@RequestBody String json) throws IOException {
-        return new JSONMinimizer(new JSONBaseReader()).read(json);
+        return new JSONBeautifier(new JSONBaseReader()).read(json);
     }
 
     @PostMapping(path = "minify", consumes = "application/json")
     public String minify(@RequestBody String json) throws IOException {
-        return new JSONBeautifier(new JSONBaseReader()).read(json);
+        return new JSONMinimizer(new JSONBaseReader()).read(json);
     }
 
     @PostMapping(path = "diff", consumes = "application/json")
-    public String diff(@RequestBody String json1, String json2) throws IOException {
+    public String diff(@RequestBody String json1,@RequestBody String json2) throws IOException {
         return TextDiff.diff(json1, json2);
     }
 }
