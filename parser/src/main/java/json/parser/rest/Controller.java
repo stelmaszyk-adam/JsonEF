@@ -1,5 +1,6 @@
 package json.parser.rest;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import json.parser.diffutil.TextDiff;
 import json.parser.formatter.JSONBaseReader;
 import json.parser.formatter.JSONBeautifier;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 @RequestMapping
@@ -40,8 +42,8 @@ public class Controller {
     }
 
     @PostMapping(path = "diff", consumes = "application/json")
-    public String diff(@RequestBody String json1, String json2) throws IOException {
-        String result = TextDiff.diff(json1, json2);
+    public String diff(@RequestBody Map<String, JsonNode> json) throws IOException {
+        String result = TextDiff.diff(json.get("key1").toString(), json.get("key2").toString());
         logger.debug(result);
         return result;
     }
