@@ -1,5 +1,7 @@
 package json.parser.formatter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * The abstract base class for JSON formatters
  * which allow to format a JSON file while reading it.
@@ -15,21 +17,21 @@ package json.parser.formatter;
  * @version 0.1
  * @since 0.1
  */
-public abstract class JSONFormatter extends JSONReader {
+public abstract class JSONFormatter implements JSONReader {
 
     /**
      * The reader object that is extended by this formatter.
      */
-    protected  JSONReader reader;
+    protected ObjectMapper objectMapper;
 
     /**
      * Initializes a <code>JSONFormatter</code>
      * and stores its argument, reader, for functionality extension.
      *
-     * @param reader the underlying JSON reader.
+     * @param objectMapper the underlying JSON reader.
      */
-    protected JSONFormatter(JSONReader reader) {
-        this.reader = reader;
+    protected JSONFormatter(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
 }
 

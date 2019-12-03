@@ -1,5 +1,11 @@
 package json.parser.formatter;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
+
 /**
  * A <code>JSONMinimizer</code> adds minimizing functionality to another JSON reader.
  * Specifically, it allows an input JSON string to be read
@@ -15,10 +21,11 @@ public class JSONMinimizer extends JSONFormatter {
      * Creates a <code>JSONMinimizer</code>
      * and stores its argument, reader, for functionality extension.
      *
-     * @param reader the underlying JSON reader.
+     * @param objectMapper the underlying JSON reader.
      */
-    public JSONMinimizer(JSONReader reader) {
-        super(reader);
+    @Autowired
+    public JSONMinimizer(ObjectMapper objectMapper) {
+        super(objectMapper);
     }
 
     /**
@@ -31,7 +38,11 @@ public class JSONMinimizer extends JSONFormatter {
      * @return minimized JSON string.
      */
     @Override
-    public String read() {
-        return null;
+    public JsonNode read(String json) {
+        try {
+            return objectMapper.readTree(json);
+        } catch (IOException e) {
+            throw new IllegalStateException("Wrong JSON format");
+        }
     }
 }

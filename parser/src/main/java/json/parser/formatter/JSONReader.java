@@ -1,5 +1,7 @@
 package json.parser.formatter;
 
-public abstract class JSONReader {
-    public abstract String read();
+import com.fasterxml.jackson.databind.JsonNode;
+
+public interface  JSONReader {
+    JsonNode read(String json);
 }

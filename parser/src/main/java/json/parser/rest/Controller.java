@@ -2,8 +2,10 @@ package json.parser.rest;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import json.parser.formatter.JSONReader;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,23 +19,30 @@ import java.io.IOException;
 @RestController
 public class Controller {
 
-    private ObjectMapper objectMapper;
+    private final JSONReader jsonReader;
 
     @Autowired
-    public Controller(ObjectMapper objectMapper){
-        this.objectMapper = objectMapper;
+    public Controller(@Qualifier("JSONReader") JSONReader jsonReader){
+        this.jsonReader = jsonReader;
     }
 
-    @PostMapping(path = "extend", produces = "application/json")
+    @PostMapping(path = "beautifier", produces = "application/json")
     public JsonNode deminify(@RequestBody String json) throws IOException {
 
-        return objectMapper.readTree(json);
+        return jsonReader.read(json);
     }
 
-    @PostMapping(path = "minimize", consumes = "application/json")
+    @PostMapping(path = "minify", consumes = "application/json")
     public String minify(@RequestBody String json) throws IOException {
 
-        JsonNode jsonNode = objectMapper.readTree(json);
+        JsonNode jsonNode = jsonReader.read(json);
         return jsonNode.toString();
+    }
+
+    @PostMapping(path = "diff", consumes = "application/json")
+    public String diff(@RequestBody String json) throws IOException {
+
+
+        return "";
     }
 }
