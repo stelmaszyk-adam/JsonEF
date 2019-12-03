@@ -1,5 +1,10 @@
 package json.parser.formatter;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+
 /**
  * A <code>JSONBeautifier</code> adds formatting functionality to another JSON reader.
  * Specifically, it allows an input JSON string to be read
@@ -30,8 +35,17 @@ public class JSONBeautifier extends JSONFormatter {
      *
      * @return formatted JSON string.
      */
+
     @Override
-    public String read() {
-        return null;
+    public String read(String json) {
+        try {
+            json = jsonReader.read(json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
+
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+        } catch (IOException e) {
+            throw new IllegalStateException("Wrong JSON format");
+        }
     }
 }
