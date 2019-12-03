@@ -40,7 +40,7 @@ public class JSONBeautifier extends JSONFormatter {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
 
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
 
         } catch (IOException e) {
             throw new IllegalStateException("Wrong JSON format");
