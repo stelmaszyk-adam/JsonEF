@@ -20,10 +20,10 @@ public class JSONBeautifier extends JSONFormatter {
      * Creates a <code>JSONBeautifier</code>
      * and stores its argument, reader, for functionality extension.
      *
-     * @param objectMapper the underlying JSON reader.
+     * @param reader the underlying JSON reader.
      */
-    public JSONBeautifier(ObjectMapper objectMapper) {
-        super(objectMapper);
+    public JSONBeautifier(JSONReader reader) {
+        super(reader);
     }
 
     /**
@@ -37,9 +37,13 @@ public class JSONBeautifier extends JSONFormatter {
      */
 
     @Override
-    public JsonNode read(String json) {
+    public String read(String json) {
         try {
-            return objectMapper.readTree(json);
+            json = jsonReader.read(json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
+
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
         } catch (IOException e) {
             throw new IllegalStateException("Wrong JSON format");
         }

@@ -22,16 +22,16 @@ public abstract class JSONFormatter implements JSONReader {
     /**
      * The reader object that is extended by this formatter.
      */
-    protected ObjectMapper objectMapper;
+    protected JSONReader jsonReader;
 
     /**
      * Initializes a <code>JSONFormatter</code>
      * and stores its argument, reader, for functionality extension.
      *
-     * @param objectMapper the underlying JSON reader.
+     * @param reader the underlying JSON reader.
      */
-    protected JSONFormatter(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+    protected JSONFormatter(JSONReader reader) {
+        jsonReader = reader;
     }
 }
 
