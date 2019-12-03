@@ -23,7 +23,6 @@ public class JSONMinimizer extends JSONFormatter {
      *
      * @param reader the underlying JSON reader.
      */
-    @Autowired
     public JSONMinimizer(JSONReader reader) {
         super(reader);
     }
@@ -37,15 +36,18 @@ public class JSONMinimizer extends JSONFormatter {
      *
      * @return minimized JSON string.
      */
-    @Override
-    public String read(String json) {
+    private String minify(String json) {
         try {
-            json = jsonReader.read(json);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
             return jsonNode.toString();
         } catch (IOException e) {
             throw new IllegalStateException("Wrong JSON format");
         }
+    }
+    @Override
+    public String read(String json) {
+        json = jsonReader.read(json);
+        return minify(json);
     }
 }

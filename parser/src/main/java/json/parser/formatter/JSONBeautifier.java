@@ -35,17 +35,21 @@ public class JSONBeautifier extends JSONFormatter {
      *
      * @return formatted JSON string.
      */
-
-    @Override
-    public String read(String json) {
+    private String beautify(String json) {
         try {
-            json = jsonReader.read(json);
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
 
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+
         } catch (IOException e) {
             throw new IllegalStateException("Wrong JSON format");
         }
+    }
+
+    @Override
+    public String read(String json) {
+            json = jsonReader.read(json);
+            return beautify(json);
     }
 }
