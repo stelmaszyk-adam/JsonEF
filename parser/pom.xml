@@ -79,7 +79,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupID>org.apache.maven.plugins</groupID>
+				<artifactID>maven-jar-plugin</artifactID>
+				<version>2.3.1</version>
+				<configuration>
+					<outputDirectory>/JsonEF/parser</outputDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
