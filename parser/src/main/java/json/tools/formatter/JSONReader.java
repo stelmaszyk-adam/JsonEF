@@ -1,4 +1,4 @@
-package json.parser.formatter;
+package json.tools.formatter;
 
 public interface JSONReader {
     String read(String json);

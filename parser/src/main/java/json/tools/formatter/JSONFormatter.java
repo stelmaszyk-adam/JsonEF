@@ -1,6 +1,4 @@
-package json.parser.formatter;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package json.tools.formatter;
 
 /**
  * The abstract base class for JSON formatters

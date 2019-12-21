@@ -1,4 +1,4 @@
-package json.parser.formatter;
+package json.tools.formatter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

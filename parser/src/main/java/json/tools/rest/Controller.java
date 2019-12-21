@@ -1,10 +1,10 @@
-package json.parser.rest;
+package json.tools.rest;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import json.parser.diffutil.TextDiff;
-import json.parser.formatter.JSONBaseReader;
-import json.parser.formatter.JSONBeautifier;
-import json.parser.formatter.JSONMinimizer;
+import json.tools.diffutil.TextDiff;
+import json.tools.formatter.JSONBaseReader;
+import json.tools.formatter.JSONBeautifier;
+import json.tools.formatter.JSONMinifier;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class Controller {
 
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
 
-    @PostMapping(path = "beautify", produces = "application/json")
+    @PostMapping(path = "/beautify", consumes = "application/json", produces = "application/json")
     public String beautify(@RequestBody String json) throws IOException {
         String result = new JSONBeautifier(new JSONBaseReader()).read(json);
         logger.info("Beautify");
@@ -33,15 +33,15 @@ public class Controller {
         return result;
     }
 
-    @PostMapping(path = "minify", consumes = "application/json")
+    @PostMapping(path = "/minify", consumes = "application/json", produces = "application/json")
     public String minify(@RequestBody String json) throws IOException {
-        String result = new JSONMinimizer(new JSONBaseReader()).read(json);
+        String result = new JSONMinifier(new JSONBaseReader()).read(json);
         logger.info("Minify");
         logger.debug(result);
         return result;
     }
 
-    @PostMapping(path = "diff", consumes = "application/json")
+    @PostMapping(path = "/diff", consumes = "application/json")
     public String diff(@RequestBody Map<String, JsonNode> json) throws IOException {
         String result = TextDiff.diff(json.get("key1").toString(), json.get("key2").toString());
         logger.debug(result);
