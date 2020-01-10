@@ -31,9 +31,9 @@ class JSONMinifierTest {
 
     @Test
     void testReadBeautified() {
-        String json = "{\r\n" +
-                "  \"a\" : \"bc\",\r\n" +
-                "  \"d\" : 34\r\n" +
+        String json = "{\n" +
+                "  \"a\" : \"bc\",\n" +
+                "  \"d\" : 34\n" +
                 "}";
         String formatted = "{\"a\":\"bc\",\"d\":34}";
         String result = formatter.read(json);
@@ -42,8 +42,8 @@ class JSONMinifierTest {
 
     @Test
     void testReadMixed() {
-        String json = "{\r\n" +
-                "  \"a\":\"bc\", \r\n" +
+        String json = "{\n" +
+                "  \"a\":\"bc\", \n" +
                 "  \"d\": 34}";
         String formatted = "{\"a\":\"bc\",\"d\":34}";
         String result = formatter.read(json);

@@ -24,34 +24,40 @@ class JSONBeautifierTest {
     @Test
     void testReadMinimized() {
         String json = "{\"a\":\"bc\",\"d\":34}";
-        String formatted = "{\r\n" +
-                "  \"a\" : \"bc\",\r\n" +
-                "  \"d\" : 34\r\n" +
+        String formatted = "{\n" +
+                "  \"a\" : \"bc\",\n" +
+                "  \"d\" : 34\n" +
                 "}";
-        String result = formatter.read(json);
+        String result = formatter.read(json)
+                .replaceAll("\\r\\n", "\n")
+                .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
     }
 
     @Test
     void testReadBeautified() {
-        String json = "{\r\n" +
-                "  \"a\" : \"bc\",\r\n" +
-                "  \"d\" : 34\r\n" +
+        String json = "{\n" +
+                "  \"a\" : \"bc\",\n" +
+                "  \"d\" : 34\n" +
                 "}";
-        String result = formatter.read(json);
+        String result = formatter.read(json)
+                .replaceAll("\\r\\n", "\n")
+                .replaceAll("\\r", "\n");
         assertEquals(json, result);
     }
 
     @Test
     void testReadMixed() {
-        String json = "{\r\n" +
-                "  \"a\":\"bc\", \r\n" +
+        String json = "{\n" +
+                "  \"a\":\"bc\", \n" +
                 "  \"d\": 34}";
-        String formatted = "{\r\n" +
-                "  \"a\" : \"bc\",\r\n" +
-                "  \"d\" : 34\r\n" +
+        String formatted = "{\n" +
+                "  \"a\" : \"bc\",\n" +
+                "  \"d\" : 34\n" +
                 "}";
-        String result = formatter.read(json);
+        String result = formatter.read(json)
+                .replaceAll("\\r\\n", "\n")
+                .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
     }
 
