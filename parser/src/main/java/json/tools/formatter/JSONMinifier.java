@@ -41,7 +41,7 @@ public class JSONMinifier extends JSONFormatter {
             JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
             return jsonNode.toString();
         } catch (IOException e) {
-            throw new IllegalStateException("Wrong JSON format");
+            throw new IllegalArgumentException("Wrong JSON format");
         }
     }
     @Override

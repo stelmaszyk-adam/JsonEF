@@ -43,7 +43,7 @@ public class JSONBeautifier extends JSONFormatter {
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
 
         } catch (IOException e) {
-            throw new IllegalStateException("Wrong JSON format");
+            throw new IllegalArgumentException("Wrong JSON format");
         }
     }
 
