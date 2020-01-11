@@ -71,57 +71,57 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--				<version>3.1.1</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>attach-javadocs</id>-->
+<!--						<goals>-->
+<!--							<goal>jar</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 
             <!--
             1. install node and npm localy
             2. install npm dependecies
             3. build React frontend
             -->
-            <plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.8.0</version>
-				<configuration>
-					<nodeVersion>v10.0.0</nodeVersion>
-					<workingDirectory>src/main/gui</workingDirectory>
-				</configuration>
-				<executions>
-                    <execution>
-						<id>install node and npm</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-					</execution>
-                    <execution>
-						<id>npm install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>Build frontend</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--            <plugin>-->
+<!--				<groupId>com.github.eirslett</groupId>-->
+<!--				<artifactId>frontend-maven-plugin</artifactId>-->
+<!--				<version>1.9.1</version>-->
+<!--				<configuration>-->
+<!--					<nodeVersion>v10.0.0</nodeVersion>-->
+<!--					<workingDirectory>src/main/gui</workingDirectory>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--                    <execution>-->
+<!--						<id>install node and npm</id>-->
+<!--						<goals>-->
+<!--							<goal>install-node-and-npm</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--                    <execution>-->
+<!--						<id>npm install</id>-->
+<!--						<goals>-->
+<!--							<goal>npm</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--					<execution>-->
+<!--						<id>Build frontend</id>-->
+<!--						<goals>-->
+<!--							<goal>npm</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<arguments>run build</arguments>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -133,7 +133,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/classes/resources</outputDirectory>
+							<outputDirectory>${basedir}/target/classes/static</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${basedir}/src/main/gui/build</directory>

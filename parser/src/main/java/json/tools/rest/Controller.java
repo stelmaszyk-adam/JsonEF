@@ -8,10 +8,7 @@ import json.tools.formatter.JSONMinifier;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Map;
@@ -25,6 +22,7 @@ public class Controller {
 
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "/beautify", consumes = "application/json", produces = "application/json")
     public String beautify(@RequestBody String json) throws IOException {
         String result = new JSONBeautifier(new JSONBaseReader()).read(json);
@@ -33,6 +31,7 @@ public class Controller {
         return result;
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "/minify", consumes = "application/json", produces = "application/json")
     public String minify(@RequestBody String json) throws IOException {
         String result = new JSONMinifier(new JSONBaseReader()).read(json);
@@ -41,6 +40,7 @@ public class Controller {
         return result;
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "/diff", consumes = "application/json")
     public String diff(@RequestBody Map<String, JsonNode> json) throws IOException {
         String result = TextDiff.diff(json.get("key1").toString(), json.get("key2").toString());
