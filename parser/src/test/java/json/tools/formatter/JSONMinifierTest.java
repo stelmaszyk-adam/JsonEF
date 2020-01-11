@@ -27,6 +27,7 @@ class JSONMinifierTest {
         String json = "{\"a\":\"bc\",\"d\":34}";
         String result = formatter.read(json);
         assertEquals(json, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -38,6 +39,7 @@ class JSONMinifierTest {
         String formatted = "{\"a\":\"bc\",\"d\":34}";
         String result = formatter.read(json);
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -48,6 +50,7 @@ class JSONMinifierTest {
         String formatted = "{\"a\":\"bc\",\"d\":34}";
         String result = formatter.read(json);
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -59,13 +62,6 @@ class JSONMinifierTest {
     void testReadInvalidJSON() {
         String json = "json";
         assertThrows(IllegalArgumentException.class, () -> formatter.read(json));
-    }
-
-    @Test
-    void testInternalReaderReadCall() {
-        String json = "{}";
-        formatter.read(json);
-        verify(reader, times(1)).read(anyString());
     }
 
 }

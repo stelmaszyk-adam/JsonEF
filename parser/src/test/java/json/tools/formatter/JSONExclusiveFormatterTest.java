@@ -36,6 +36,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -49,6 +50,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -64,6 +66,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -79,6 +82,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -92,6 +96,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(formatted, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -104,6 +109,7 @@ class JSONExclusiveFormatterTest {
                 .replaceAll("\\r\\n", "\n")
                 .replaceAll("\\r", "\n");
         assertEquals(json, result);
+        verify(reader, times(1)).read(anyString());
     }
 
     @Test
@@ -117,14 +123,6 @@ class JSONExclusiveFormatterTest {
         formatter = new JSONExclusiveFormatter(reader, FormatterFlags.NONE);
         String json = "json";
         assertThrows(IllegalArgumentException.class, () -> formatter.read(json));
-    }
-
-    @Test
-    void testInternalReaderReadCall() {
-        formatter = new JSONExclusiveFormatter(reader, FormatterFlags.NONE);
-        String json = "{}";
-        formatter.read(json);
-        verify(reader, times(1)).read(anyString());
     }
 
 }
