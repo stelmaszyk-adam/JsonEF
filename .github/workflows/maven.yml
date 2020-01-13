@@ -19,9 +19,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: binaries
-        path: parser/target/parser-1.2.Beta-javadoc.jar
+        path: parser/target/parser-1.2.Beta.jar
     - name: Upload javadoc artifact
       uses: actions/upload-artifact@v1
       with:
         name: binaries
-        path: parser/target/parser-1.2.Beta.jar
+        path: parser/target/parser-1.2.Beta-javadoc.jar
