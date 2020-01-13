@@ -15,8 +15,13 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file parser/pom.xml
-    - name: Upload atrifact
+    - name: Upload main artifact
       uses: actions/upload-artifact@v1
       with:
         name: binaries
-        path: parser/target/*.jar
+        path: parser/target/parser-1.2.Beta-javadoc.jar
+    - name: Upload javadoc artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: binaries
+        path: parser/target/parser-1.2.Beta.jar
