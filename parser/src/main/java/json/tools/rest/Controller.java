@@ -16,13 +16,14 @@ import java.util.Map;
 
 @RequestMapping
 @Slf4j
+@CrossOrigin
 @RestController
 public class Controller {
 
 
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin
     @PostMapping(path = "/beautify", consumes = "application/json", produces = "application/json")
     public String beautify(@RequestBody String json) throws IOException {
         String result = new JSONBeautifier(new JSONBaseReader()).read(json);
@@ -31,7 +32,7 @@ public class Controller {
         return result;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin
     @PostMapping(path = "/minify", consumes = "application/json", produces = "application/json")
     public String minify(@RequestBody String json) throws IOException {
         String result = new JSONMinifier(new JSONBaseReader()).read(json);
@@ -40,7 +41,7 @@ public class Controller {
         return result;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin
     @PostMapping(path = "/diff", consumes = "application/json")
     public String diff(@RequestBody Map<String, JsonNode> json) throws IOException {
         String result = TextDiff.diff(json.get("key1").toString(), json.get("key2").toString());
