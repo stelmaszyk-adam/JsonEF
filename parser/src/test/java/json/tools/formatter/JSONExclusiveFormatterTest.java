@@ -25,7 +25,7 @@ class JSONExclusiveFormatterTest {
 
     @Test
     void testReadWithIndentsRemoved() {
-        formatter = new JSONExclusiveFormatter(reader, EnumSet.of(FormatterFlags.LINE_BREAKS));
+        formatter = new JSONExclusiveFormatter(reader, EnumSet.of(FormatterFlags.INDENTS));
         String json = "{\n" +
                 "  \"a\":\"bc\", \n" +
                 "  \"d\": 34}";
