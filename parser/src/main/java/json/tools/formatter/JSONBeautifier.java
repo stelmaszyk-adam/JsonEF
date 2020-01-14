@@ -1,4 +1,4 @@
-package json.parser.formatter;
+package json.tools.formatter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +43,7 @@ public class JSONBeautifier extends JSONFormatter {
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
 
         } catch (IOException e) {
-            throw new IllegalStateException("Wrong JSON format");
+            throw new IllegalArgumentException("Wrong JSON format");
         }
     }
 

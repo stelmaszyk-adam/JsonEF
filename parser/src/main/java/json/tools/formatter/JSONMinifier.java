@@ -1,8 +1,7 @@
-package json.parser.formatter;
+package json.tools.formatter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ import java.io.IOException;
  * @version 0.1
  * @since 0.1
  */
-public class JSONMinimizer extends JSONFormatter {
+public class JSONMinifier extends JSONFormatter {
 
     /**
      * Creates a <code>JSONMinimizer</code>
@@ -23,7 +22,7 @@ public class JSONMinimizer extends JSONFormatter {
      *
      * @param reader the underlying JSON reader.
      */
-    public JSONMinimizer(JSONReader reader) {
+    public JSONMinifier(JSONReader reader) {
         super(reader);
     }
 
@@ -42,7 +41,7 @@ public class JSONMinimizer extends JSONFormatter {
             JsonNode jsonNode = mapper.readValue(json, JsonNode.class);
             return jsonNode.toString();
         } catch (IOException e) {
-            throw new IllegalStateException("Wrong JSON format");
+            throw new IllegalArgumentException("Wrong JSON format");
         }
     }
     @Override

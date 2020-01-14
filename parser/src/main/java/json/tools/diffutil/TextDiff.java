@@ -1,4 +1,4 @@
-package json.parser.diffutil;
+package json.tools.diffutil;
 
 import com.github.difflib.DiffUtils;
 import com.github.difflib.UnifiedDiffUtils;

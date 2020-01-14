@@ -1,4 +1,4 @@
-package json.parser.formatter;
+package json.tools.formatter;
 
 public class JSONBaseReader implements JSONReader {
     @Override
